@@ -1,0 +1,59 @@
+MissionPackage
+{
+
+    name = Kerbal Corp Mission Package
+    description = Kerbal Corp, the leading manufacturer of Keba Green, the number one food in Kerba City.\n\nThis package has the campaign missions used in the Kerbal Corp Let's Play.
+    ownOrder = true
+
+
+
+    Mission
+    {
+        name = Welcome to Kerbal Corp
+        description = I am Kelvin Kermin, CEO of Kerbal Corpm and I am taking the time to welcome you to your new position as Director of the Kerbal Space Center, or KSC for short.\n\n While I am will not be your normal contact with Kerbal Corp, a serious problem has come to my attention. It is not so much a problem for me, it is a problem for you. Due to an error your direct predecessor the entire entire budget for the KSC has been blown. As you can imagine this is actually why you are now in your current post as your predecessor had his contract terminated.\n\n As a result while you have a massive complex, after paying the salaries of the staff you are only able to afford a budget of 10,000 Krones to fund the entire project. Thankfully this includes three Test Dummies.. er.. Intrepid Explorers as part of your initial staff. Anyway given what happened with the previous Director, you will not be given an unlimited budget, but will get paid for successful missions.\n\n You will find the details for your first mission in the attached profile.  Good Luck you will need it, and do not make the same mistake as your predecessor and blow your entire budget, your contract will be terminated if you do.
+    
+        reward = 10000
+        category = EVA
+    
+        packageOrder = 1
+    
+        SubMissionGoal
+        {
+            description = Kerbal Corp is curious on the make up of the ground around KSC.\n\n Test deployment of a Command Pod to the Launch Pad by having your Explorer give a Crew Report while on the Launch Pad. Then test the staging controls followed by having him exit the pod and collect at least two Surface Samples and EVA Reports to store inside the Pod. Then have him do a quick thirty minute survey of KSC on foot while wearing the Hazard suit.
+           
+            EVAGoal
+            {
+            minSeconds = TIME(30m)
+            }
+            
+        }
+    
+    }
+    
+    
+    Mission
+    {
+        name = Science Division
+        description = Greetings Director,\n\n I am Mira Kermin and I will be your new Liaison to Kerbal Corp. Anyway I'm pleased to inform you of the opening of the Science Division, which is god news for you as it opens new possible technologies. An example is this new thing they are calling a parachute that needs to be tested, as such you need to build a small rocket that can go at least 10 Kilometers, this shouldn't be too difficult and will allow a relatively safe test of the parachute.
+    
+        reward = 10000
+        category = ORBIT
+    
+        requiresMission = Welcome to Kerbal Corp
+        packageOrder = 2
+    
+    
+        OrbitGoal
+        {
+        body = Kerbin
+        minAltitude 10000
+        }
+    
+        LandingGoal
+        {
+            body = Kerbin
+        }
+    }
+
+
+}
