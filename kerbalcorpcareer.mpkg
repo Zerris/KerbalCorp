@@ -2,26 +2,291 @@ MissionPackage
 {
 
     name = Kerbal Corp Email Client
-    description = Kerbal Corp, the leading manufacturer of Keba Green, the number one food in Kerba City.
+    description = For a thousand years the Kerbals have lived hidden underground in the safety of Kerba City. Stories of the surface world have long become monster filled myths. The worst of which is the Great Kraken laying in wait to devour any Kerbal that finds himself on the surface of Kerbin. Several months ago a team of Kerbal Corp employees found a path to the surface, and the long ancient ruins of some sort of complex built long ago by their Ancestors.\n\n Due to over population issues a joint government and Kerbal Corp project was launched, to refurbish parts of the ruins and set up a program to scout out Kerbin for it Reclamation.\n\n Kerbal Corp, the leading manufacturer of Keba Green, the number one food in Kerba City.
     ownOrder = true
 
 
 
     Mission
     {
-        name = Welcome to Kerbal Corp
-        description = From: kkermanceo@KerbalCorp.com\n To: director@ksc.net\n Subject: Welcome to Kerbal Corp!\n\n Hello, I would like to be the first to congratulate you on being the lucky Kerbal to be selected as the new Director for the Kerbal Space Center. Normally you would not be receiving a direct communication from me, however a problem has come to my attention. This problem is the fact your new Division is on the verge of bankruptcy due to the actions of your direct predecessor.\n\n The idiot in question blew the entire budget on all the empty buildings that currently make up your new Complex. In fact after all is said and done there is only enough funds left over for you and three other Kerbals. \n\n In fact your total budget at the moment is 10,000 Krones and you must use it to fund all explorations of the Surface. I suggest you find some method to create a profit otherwise I will be forced to shut down the Surface Reclamation Project.\n\n\n From: wvkerman@kerbauniversity.edu\n To: director@ksc.net\n Subject: Re: Contract work\n\n Surface samples?!? You can actually get me samples from the surface of Kerbin? Yes if you are willing to have some shipped to me I am willing to pay 10,000 Krones for the lot.
+        name = 01 - Welcome to Kerbal Corp
+        description = From: kkermanceo@KerbalCorp.com\n To: director@ksc.net\n Subject: Welcome to Kerbal Corp!\n\n Hello, I would like to be the first to congratulate you on being the lucky Kerbal to be selected as the new Director for the Kerbal Space Center. Normally you would not be receiving a direct communication from me, however a problem has come to my attention. This problem is the fact your new Division is on the verge of bankruptcy due to the actions of your direct predecessor.\n\n The idiot in question blew the entire budget on all the empty buildings that currently make up your new Complex. In fact after all is said and done there is only enough funds left over for you and three other Kerbals. \n\n In fact your total budget at the moment is 50,000 Krones and you must use it to fund all explorations of the Surface. I suggest you find some method to create a profit otherwise I will be forced to shut down the Surface Reclamation Project.\n\nYours truly,\nKelvin Kerman\nKerbal Corp Chief Executive Officer\n\n\n\n From: wvkerman@kerbauniversity.edu\n To: director@ksc.net\n Subject: Re: Contract work\n\n Surface samples?!? You can actually get me samples from the surface of Kerbin? Yes if you are willing to have some shipped to me I am willing to pay 20,000 Krones for the lot.\n\nWernher von Kerman
         
-        category = EVA
-        reward = 10000
+        category = EVA, MANNED
+        reward = 30000
         packageOrder = 1
         
         EVAGoal
         {
+        reward = 0
         minSeconds = TIME(2m)
         }
     
     
     }
     
+    Mission
+    {
+        name = 02 - What goes up must come down
+        description = From: wvkerman@kerbauniversity.edu\n To: director@ksc.net\n Subject: Re: Here are your samples\n\n The surface samples you acquired show very interesting results. Especially as it shows the area ground around the KSC is not in fact toxic to Kerbals. However in order to avoid the ravenous monsters that no doubt prowl the surface outside visual range of the KSC. Two technologies have been developed for your use. The first is the solid fuel rocket, which when strapped to the bottom of a command pod will sand it hurtling into the air.\n\n The second one is a prototype the engineers are calling a parachute, which is when properly deployed should keep the same command pod from crashing into the ground too hard. When combined this should allow you to create a rapid transport pod that should get you to another location where you can take more surface samples. Again I'm willing to pay 2,000 krones for an entirely new sample. Also I hear the government is willing to pay out a few bonuses if you meet some other directives while working on this contract.
+        
+        category = AVIATION, MANNED
+        reward = 30000
+        packageOrder = 2
+        requiresMission = 01 - Welcome to Kerbal Corp
+    
+        PartGoal
+        {
+            partName = parachuteSingle
+            partCount = 1
+            reward = 1000
+            optional = true
+        }
+        
+        PartGoal
+        {
+            partName = solidBooster
+            partcount = 1
+        }
+        
+        OrbitGoal
+        {
+            reward = 1000
+            minAltitude = 10000
+            throttleDown = false
+        }
+        
+        LandingGoal
+        {
+            reward = 1000
+            optional = true
+        }
+   
+    
+    }
+    
+        Mission
+    {
+        name = 03 - Liquid Fuel
+        description = From: wvkerman@ksc.net\n To: director@ksc.net\n Subject: New Engines\n\n Thanks to the data received we have discovered there is a limit to the range of a single Booster, as such we have developed a new Engine that should not have have that range limit. However it needs to be tested, as such a small fuel tank has been created for this purpose.\n\n You are to see just how high this small tank can go with the new engine.
+        
+        category = AVIATION, MANNED
+        reward = 30000
+        packageOrder = 3
+        requiresMission = 02 - What goes up must come down
+
+        PartGoal
+        {
+            partName = fuelTankSmall
+            partCount = 1
+            maxPartCount = 1
+        }
+        
+        PartGoal
+        {
+            partName= liquidEngine
+            partCount = 1
+            maxPartCount = 1
+        }
+                
+        OrbitGoal
+        {
+            minAltitude = 5000
+            throttleDown = false
+        }
+        
+        LandingGoal
+        {
+            optional = true
+            reward = 1000
+        }
+   
+    
+    }
+    
+    Mission
+    {
+        name = 04 - Science Division
+        description = From: wvkerman@kerbauniversity.edu\n To: director@ksc.net\n Subject: New Offices\n\n Due to the interest drawn by various scientists from the second batch of samples we have managed to get rights to move into an empty section of the KSC.\n\n We've also designed some new equipment for your use. A communication antenna to allow you to transmit reports from the pods, continue sending kerbals to new locations and collecting samples. Transmit their crew reports and collect samples when they land, please note however that if you attempt to transmit while in flight the extended antenna will break off. It will also eat up a large chunk of your energy reserves to transmit. So only transmit the information when you have a full charge.
+        
+        category = AVIATION, MANNED
+        reward = 30000
+        packageOrder = 4
+        requiresMission = 03 - Liquid Fuel
+
+        PartGoal
+        {
+            partName = longAntenna
+            partCount = 1
+        }
+                
+        OrbitGoal
+        {
+            minAltitude = 10000
+            throttleDown = false
+        }
+        
+        LandingGoal
+        {
+			reward = 1000
+			optional = true
+        }
+   
+    
+    }
+    
+    Mission
+    {
+        name = 05 - Decoupler
+        description = From: wvkerman@ksc.net\n To: director@ksc.net\n Subject: New Engines\n\n The engine test was a success, even though that small tank has half the range of the Booster, the design is sound. As such we managed to create two more fuel tanks, one half the size of the prototype and one twice the size. However due to weight limits the parachute can only hold so much weight, as such a new solution has been developed which we call the Decoupler. This will allow you to jettison empty and no longer useful sections of the rocket. We want to test to make sure that it is actually functional. It should improve the survivability of your designs.
+        
+        category = AVIATION, MANNED
+        reward = 35000
+        packageOrder = 5
+        requiresMission = 04 - Science Division
+
+        PartGoal
+        {
+            partName = stackDecoupler
+            partCount = 1
+        }
+        
+            
+        OrbitGoal
+        {
+            minAltitude = 10000
+            throttleDown = false
+        }
+        
+        LandingGoal
+        {
+        }
+   
+    
+    }
+    
+    Mission
+    {
+        name = 06 - Goo Tests
+        description = From: wvkerman@ksc.net\n To: director@ksc.net\n Subject: Goo Samples\n\n With the successful test of the Decoupler you are now requested to do observation of a new substance we have discovered and are for now calling Goo. We want you to create a transport system that will allow us to get observations from in different conditions and locations on Kerbin.
+        
+        category = AVIATION, MANNED, SCIENCE
+        reward = 40000
+        packageOrder = 6
+        requiresMission = 05 - Decoupler
+        repeatable = true
+
+        PartGoal
+        {
+            partName = GooExperiment
+            partCount = 1
+        }
+        
+            
+        OrbitGoal
+        {
+            minAltitude = 10000
+            throttleDown = false
+        }
+        
+        LandingGoal
+        {
+        }
+   
+    
+    }
+    
+    Mission
+    {
+        name = 07 - Go Higher and Farther
+        description = From: techdivision@ksc.net\n To: director@ksc.net\n Subject: More Power\n\n Hello Director it has come to our attention that the current rocket designs are too hard to steer and the current rockets are simply to under powered to get the pods outside a certan radius. To solve this problem we developed a newer engine and a much bigger booster.\n\n We want to see just how high the this combined with the newest transport design will go.
+        
+        category = ORBIT, MANNED
+        reward = 45000
+        packageOrder = 7
+        requiresMission = 06 - Goo Tests
+
+        PartGoal
+        {
+            partName = solidBooster1-1
+            partCount = 1
+        }
+        
+        PartGoal
+        {
+            partName = liquidEngine2
+            partCount = 1
+        }
+ 
+        OrbitGoal
+        {
+            minAltitude = 70000
+            throttleDown = false
+        }
+        
+        LandingGoal
+        {
+        }
+   
+    
+    }
+    
+    Mission
+    {
+        name = 08 - There is no ceiling
+        description = From: wvkerman@ksc.net\n To: director@ksc.net\n Subject: Need more data!\n\n The shocking information that the sky is not a painted ceiling has sent shockwaves throughout the Science Division. Better still is the new effective drop rang for the pods, however a disturbing discovery was also made.\n\n The bottom of the command pod was partially melted away, likely during the heat the pilot reported on return. As such it is recommended that when you aim for return to not go at too steep an angle.\n\n As for your next contract, with your increased range it is requested that you get samples from other parts of the continent that were out or reach before. Also we have come up with a new bit of technology we wish you to test, landing legs. These should allow your landings to be a bit more stable.
+        
+        category = ORBIT, MANNED, SCIENCE
+        reward = 50000
+        packageOrder = 8
+        requiresMission = 07 - Go Higher and Farther
+        repeatable = true
+        
+        PartGoal
+        {
+            partName = landingLeg1
+            partCount = 3
+        }
+
+        OrbitGoal
+        {
+            minAltitude = 20000
+            throttleDown = false
+        }
+        
+        LandingGoal
+        {
+        }
+   
+    
+    }
+    
+    Mission
+    {
+        name = 09 - Attention Director
+        description = From: mirakerman@KerbalCorp.com\n To: director@ksc.net\n Subject: Attention Director\n\n Greetings Director,\n\n I am Mira Kerman, and I will be your official liaison with Kerbal Corp. Given the reports and data that has been coming in evidence is showing that the Surface Reclamation Project is in fact viable. As you have proved some profitability we are willing to offer you a mission contract.\n\n The first mission is simple achieve a stable orbit around Kerbin and then return safely. You should try to maintain the orbit for at least a day.\n\n In order to aid you a new radial decoupler and a new radially mounted parachute has been developed for your use on this mission.
+        
+        category = ORBIT, MANNED
+        reward = 100000
+        packageOrder = 9
+        requiresMission = 08 - There is no ceiling
+        
+        PartGoal
+        {
+            partName = radialDecoupler
+            partCount = 1
+        }
+        
+        OrbitGoal
+        {
+            minPeA = 70000
+            minSeconds = TIME(30m)
+        }
+        
+        LandingGoal
+        {
+        }
+   
+    
+    }
 }
